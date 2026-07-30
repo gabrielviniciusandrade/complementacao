@@ -20,6 +20,356 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
+
+/* ==========================
+   ANIMAÇÕES
+========================== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* Fundo animado */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(59,130,246,.15),transparent 25%),
+    radial-gradient(circle at 80% 30%,rgba(59,130,246,.12),transparent 25%),
+    radial-gradient(circle at 50% 90%,rgba(59,130,246,.15),transparent 25%);
+    animation:fundo 12s linear infinite;
+    z-index:-2;
+}
+
+@keyframes fundo{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-30px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* HERO */
+
+.hero-bg{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.hero-bg::after{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:rgba(59,130,246,.12);
+
+filter:blur(130px);
+
+border-radius:50%;
+
+top:-180px;
+right:-200px;
+
+animation:girar 18s linear infinite;
+
+}
+
+@keyframes girar{
+
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+/* BOTÕES */
+
+a,
+button{
+
+transition:.35s;
+
+}
+
+a:hover,
+button:hover{
+
+transform:translateY(-4px);
+
+}
+
+/* CARDS */
+
+.project-card,
+.certificate-card{
+
+transition:.4s;
+
+}
+
+.project-card:hover,
+.certificate-card:hover{
+
+transform:
+translateY(-12px)
+scale(1.03);
+
+border-color:#3b82f6;
+
+box-shadow:
+
+0 0 25px rgba(59,130,246,.45);
+
+}
+
+/* HABILIDADES */
+
+.glass{
+
+transition:.35s;
+
+}
+
+.glass:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+
+0 0 25px rgba(59,130,246,.35);
+
+}
+
+/* TITULOS */
+
+.heading{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+.heading::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-10px;
+
+width:0%;
+
+height:3px;
+
+background:#3b82f6;
+
+transition:.5s;
+
+}
+
+.heading:hover::after{
+
+width:100%;
+
+}
+
+/* REVELAR AO ROLAR */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:1s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:none;
+
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#2563eb;
+
+border-radius:30px;
+
+}
+
+/* BOTÃO TOPO */
+
+#topo{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+background:#2563eb;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:22px;
+
+cursor:pointer;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.35s;
+
+z-index:999;
+
+}
+
+#topo.show{
+
+opacity:1;
+
+pointer-events:auto;
+
+}
+
+#topo:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 25px #2563eb;
+
+}
+
+/* CERTIFICADOS */
+
+.certificate-card{
+
+background:#18181b;
+
+border-radius:30px;
+
+padding:40px;
+
+text-align:center;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.certificate-card::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+
+height:250px;
+
+background:rgba(59,130,246,.18);
+
+border-radius:50%;
+
+top:-150px;
+
+right:-120px;
+
+transition:.5s;
+
+}
+
+.certificate-card:hover::before{
+
+transform:scale(1.5);
+
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+
+.fade-up{
+
+animation:fadeUp 1s forwards;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+    /*outra parte que estava a de cima coloquei agora */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
     
     body { font-family: 'Inter', sans-serif; }
@@ -51,6 +401,7 @@
       <div class="hidden md:flex items-center gap-10 text-sm font-medium">
         <a href="#sobre" class="hover:text-blue-400 transition-colors">Sobre</a>
         <a href="#projetos" class="hover:text-blue-400 transition-colors">Projetos</a>
+        <a href="#certificados" class="hover:text-blue-400 transition-colors">Certificados</a>
         <a href="#habilidades" class="hover:text-blue-400 transition-colors">Habilidades</a>
         <a href="#experiencia" class="hover:text-blue-400 transition-colors">Experiência</a>
         <a href="#contato" class="hover:text-blue-400 transition-colors">Contato</a>
@@ -129,13 +480,151 @@
           <p id="modal-learned" class="text-zinc-300"></p>
         </div>
         
-        <a href="#" id="modal-link" 
-           class="inline-block px-8 py-4 bg-blue-500 hover:bg-blue-600 rounded-2xl font-semibold transition-all">
-          Ver Projeto no GitHub →
-        </a>
       </div>
     </div>
   </div>
+
+<!-- ================= CERTIFICADOS ================= -->
+<section id="certificados" class="py-24">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+        <h2 class="text-5xl font-bold heading text-center mb-14">
+            📜 Certificados
+        </h2>
+
+        <p class="text-center text-zinc-400 mb-14">
+            Aqui estão alguns dos certificados conquistados durante minha jornada.
+        </p>
+
+        <div id="certificados-grid" class="grid md:grid-cols-3 gap-8">
+
+            <!-- CERTIFICADO 1 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Começando em Programação',
+                'Este certificado comprova meus primeiros conhecimentos em programação.',
+                'WhatsApp Image 2026-07-29 at 20.14.09.jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">🏆</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Começando em Programação
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+            <!-- CERTIFICADO 2 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Lógica de Programação',
+                'Curso de lógica de programação e algoritmos.',
+                'WhatsApp Image 2026-07-29 at 20.04.35.jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">💻</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Lógica de Programação
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+            <!-- CERTIFICADO 3 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Arquitetura de computadores',
+                ' por trás de como seu programa funciona.',
+                'WhatsApp Image 2026-07-29 at 20.04.34.jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">🌐</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Arquitetura de computadores
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+            <!-- CERTIFICADO 4 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Projetos com programação',
+                'gerador inteligente de artigos.',
+                'WhatsApp Image 2026-07-29 at 20.04.34 (1).jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">⚡</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Projetos com programação
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+            <!-- CERTIFICADO 5 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Praticando Python',
+                'Praticando Python: laços for e while.',
+                'WhatsApp Image 2026-07-29 at 20.04.34 (2).jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">🗄️</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Praticando Python
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+            <!-- CERTIFICADO 6 -->
+            <div class="certificate-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer"
+                onclick="abrirCertificado(
+                'Praticando Python',
+                'Praticando Python: condicionais if, elif e else',
+                'WhatsApp Image 2026-07-29 at 20.04.34 (3).jpeg'
+                )">
+
+                <div class="text-6xl text-center mb-5">🎓</div>
+
+                <h3 class="text-2xl font-semibold text-center mb-3">
+                    Praticando Python
+                </h3>
+
+                <p class="text-zinc-400 text-center">
+                    Clique para visualizar
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 
   <!-- HABILIDADES -->
   <section id="habilidades" class="py-24">
@@ -296,6 +785,54 @@
     });
 
     window.onload = createProjectCards;
+
+function abrirCertificado(titulo, descricao, imagem){
+
+document.getElementById("tituloCertificado").textContent = titulo;
+
+document.getElementById("descricaoCertificado").textContent = descricao;
+
+document.getElementById("imagemCertificado").src = imagem;
+
+document.getElementById("modalCertificado").classList.remove("hidden");
+
+}
+
+function fecharCertificado(){
+
+document.getElementById("modalCertificado").classList.add("hidden");
+
+}
+
   </script>
+
+<div id="modalCertificado"
+class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+
+<div class="bg-zinc-900 rounded-3xl max-w-4xl w-[90%] p-8">
+
+<div class="flex justify-between items-center mb-6">
+
+<h2 id="tituloCertificado"
+class="text-3xl font-bold text-blue-400"></h2>
+
+<button onclick="fecharCertificado()"
+class="text-3xl">
+×
+</button>
+
+</div>
+
+<p id="descricaoCertificado"
+class="mb-8 text-zinc-300"></p>
+
+<img
+id="imagemCertificado"
+class="w-full rounded-2xl border border-blue-500">
+
+</div>
+
+</div>
+
 </body>
 </html>
