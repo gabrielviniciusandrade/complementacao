@@ -1,0 +1,15 @@
+src/
+├── app.js
+├── database/
+│   ├── conexao.js
+│   └── banco.sql
+├── routes/portfolio.routes.js
+├── controllers/portfolio.controller.js
+├── services/{perfil,curso,certificado}.service.js
+├── repositories/{perfil,curso,certificado}.repository.js
+└── views/portfolio.ejs
+docs/mer.png
+.env (não vai pro GitHub)
+.gitignore
+package.json
+README.md

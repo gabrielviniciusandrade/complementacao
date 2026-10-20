@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio</title>
+</head>
+<body>
+  <h1><%= perfil.nome %></h1>
+  <p><%= perfil.descricao %></p>
+
+  <h2>Cursos</h2>
+  <ul>
+    <% cursos.forEach(c => { %>
+      <li><%= c.nome %> — <%= c.horas %>h</li>
+    <% }) %>
+  </ul>
+
+  <h2>Certificados</h2>
+  <ul>
+    <% certificados.forEach(c => { %>
+      <li><%= c.titulo %> (<%= c.ano %>)</li>
+    <% }) %>
+  </ul>
+</body>
+</html>
